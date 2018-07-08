@@ -6,6 +6,8 @@ public class GameDriver extends JFrame {
 	
 	public static final int WINDOW_WIDTH = 1200;
 	public static final int WINDOW_HEIGHT = 600;
+	
+	private static final int NUM_SNAKES = 1; // use 2 for multiplayer, cannot be more than 3
 
 	
 	public GameDriver() {
@@ -13,7 +15,7 @@ public class GameDriver extends JFrame {
 	}
 	
 	private void init() {
-		add(new Surface());
+		add(new Surface(NUM_SNAKES));
 		
 		setResizable(false);
 		pack();
