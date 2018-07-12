@@ -27,7 +27,7 @@ public class Surface extends JPanel implements ActionListener {
 	public Surface(int numSnakes) {
 		snakes = new ArrayList<Snake>();
 		for (int i = 0; i < numSnakes; i++) {
-			snakes.add(new Snake(4 + i*10, 1, 0, -1, 5));
+			snakes.add(new Snake(4 + i * 10, 1, 0, -1, 10, i));
 		}
 		aliveSnakes = numSnakes;
 		
@@ -93,28 +93,6 @@ public class Surface extends JPanel implements ActionListener {
 	}
 	
 	/**
-	 * Returns the x-direction (-1, 0, or 1) of the Snake with the given index.
-	 * If the Snake does not exist, returns -2.
-	 * 
-	 * @param snakeNum index of the Snake
-	 * @returns x-direction of the Snake or -2 if it does not exist
-	 */
-	public static int getDirX(int snakeNum) {
-		return (snakeNum < snakes.size()) ? snakes.get(snakeNum).getDirX() : -2; 
-	}
-	
-	/**
-	 * Returns the y-direction (-1, 0, or 1) of the Snake with the given index.
-	 * If the Snake does not exist, returns -2.
-	 * 
-	 * @param snakeNum index of the Snake
-	 * @returns y-direction of the Snake or -2 if it does not exist
-	 */
-	public static int getDirY(int snakeNum) {
-		return (snakeNum < snakes.size()) ? snakes.get(snakeNum).getDirY() : -2;
-	}
-	
-	/**
 	 * Returns whether the Snake with the given index is alive
 	 * 
 	 * @param snakeNum index of the Snake
@@ -144,13 +122,11 @@ public class Surface extends JPanel implements ActionListener {
 			if (!snake.dead) {
 				if (snake.isDead()) {
 					aliveSnakes--;
-				} else {
-					if (snake.isFoodInSnake(food)) {
-						snake.addSegment();
-						moveFood();
-					} else {				
-						snake.updateNormal();
-					}
+				} else if (snake.isFoodInSnake(food)) {
+					snake.addSegment();
+					moveFood();
+				} else {		
+					snake.updateNormal();
 				}
 			}
 		}

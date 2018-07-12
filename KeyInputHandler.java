@@ -12,13 +12,13 @@ public class KeyInputHandler extends KeyAdapter {
 	public void keyPressed(KeyEvent e) {
 		for (int i = 0; i < Surface.getNumSnakes(); i++) {
 			if (Surface.isAlive(i)) {
-				if (e.getKeyCode() == keys[i][0] && Surface.getDirY(i) == 0) {
+				if (e.getKeyCode() == keys[i][0]) {
 					Surface.setDirection(i, 0, 1);
-				} else if (e.getKeyCode() == keys[i][1] && Surface.getDirY(i) == 0) {
+				} else if (e.getKeyCode() == keys[i][1]) {
 					Surface.setDirection(i, 0, -1);
-				} else if (e.getKeyCode() == keys[i][2] && Surface.getDirX(i) == 0) {
+				} else if (e.getKeyCode() == keys[i][2]) {
 					Surface.setDirection(i, -1, 0);
-				} else if (e.getKeyCode() == keys[i][3] && Surface.getDirX(i) == 0) {
+				} else if (e.getKeyCode() == keys[i][3]) {
 					Surface.setDirection(i, 1, 0);
 				}
 			}
